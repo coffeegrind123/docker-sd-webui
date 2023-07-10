@@ -13,7 +13,10 @@ RUN apt update && \
 #RUN pip3 install --upgrade pip
 RUN pip install -q torch==2.0.0+cu118 torchvision==0.15.1+cu118 torchaudio==2.0.1+cu118 torchtext==0.15.1 torchdata==0.6.0 --extra-index-url https://download.pytorch.org/whl/cu118 -U && \
     pip install -q xformers==0.0.19 triton==2.0.0 -U && \
-    pip install fastapi==0.90.0 -U
+    pip install fastapi==0.90.0 -U && \
+#promptgen
+    pip install transformers==4.30.1 -U && \
+    pip install auto_gptq==0.2.2 -U
 
 RUN git clone --depth 1 -b v2.3 https://github.com/camenduru/stable-diffusion-webui && \
     git clone --depth 1 https://huggingface.co/embed/negative /content/stable-diffusion-webui/embeddings/negative && \
