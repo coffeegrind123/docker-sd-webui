@@ -16,77 +16,77 @@ RUN pip install -q torch==2.0.0+cu118 torchvision==0.15.1+cu118 torchaudio==2.0.
     pip install fastapi==0.90.0 -U
 
 RUN git clone --depth 1 -b v2.3 https://github.com/camenduru/stable-diffusion-webui && \
-	git clone --depth 1 https://huggingface.co/embed/negative /content/stable-diffusion-webui/embeddings/negative && \
-	git clone --depth 1 https://huggingface.co/embed/lora /content/stable-diffusion-webui/models/Lora/positive && \
+    git clone --depth 1 https://huggingface.co/embed/negative /content/stable-diffusion-webui/embeddings/negative && \
+    git clone --depth 1 https://huggingface.co/embed/lora /content/stable-diffusion-webui/models/Lora/positive && \
     aria2c --console-log-level=error -c -x 16 -s 16 -k 1M https://huggingface.co/embed/upscale/resolve/main/4x-UltraSharp.pth -d /content/stable-diffusion-webui/models/ESRGAN -o 4x-UltraSharp.pth && \
     wget https://raw.githubusercontent.com/camenduru/stable-diffusion-webui-scripts/main/run_n_times.py -O /content/stable-diffusion-webui/scripts/run_n_times.py && \
-	git clone --depth 1 https://github.com/deforum-art/deforum-for-automatic1111-webui /content/stable-diffusion-webui/extensions/deforum-for-automatic1111-webui && \
-	git clone --depth 1 https://github.com/AlUlkesh/stable-diffusion-webui-images-browser /content/stable-diffusion-webui/extensions/stable-diffusion-webui-images-browser && \
-	git clone --depth 1 https://github.com/camenduru/stable-diffusion-webui-huggingface /content/stable-diffusion-webui/extensions/stable-diffusion-webui-huggingface && \
-	git clone --depth 1 https://github.com/camenduru/sd-civitai-browser /content/stable-diffusion-webui/extensions/sd-civitai-browser && \
-	git clone --depth 1 https://github.com/kohya-ss/sd-webui-additional-networks /content/stable-diffusion-webui/extensions/sd-webui-additional-networks && \
-	git clone --depth 1 https://github.com/Mikubill/sd-webui-controlnet /content/stable-diffusion-webui/extensions/sd-webui-controlnet && \
-	git clone --depth 1 https://github.com/fkunn1326/openpose-editor /content/stable-diffusion-webui/extensions/openpose-editor && \
-	git clone --depth 1 https://github.com/jexom/sd-webui-depth-lib /content/stable-diffusion-webui/extensions/sd-webui-depth-lib && \
-	git clone --depth 1 https://github.com/hnmr293/posex /content/stable-diffusion-webui/extensions/posex && \
-	git clone --depth 1 https://github.com/nonnonstop/sd-webui-3d-open-pose-editor /content/stable-diffusion-webui/extensions/sd-webui-3d-open-pose-editor && \
-	git clone --depth 1 https://github.com/camenduru/sd-webui-tunnels /content/stable-diffusion-webui/extensions/sd-webui-tunnels && \
-	git clone --depth 1 https://github.com/etherealxx/batchlinks-webui /content/stable-diffusion-webui/extensions/batchlinks-webui && \
-	git clone --depth 1 https://github.com/catppuccin/stable-diffusion-webui /content/stable-diffusion-webui/extensions/stable-diffusion-webui-catppuccin && \
-	git clone --depth 1 https://github.com/camenduru/a1111-sd-webui-locon /content/stable-diffusion-webui/extensions/a1111-sd-webui-locon && \
-	git clone --depth 1 https://github.com/AUTOMATIC1111/stable-diffusion-webui-rembg /content/stable-diffusion-webui/extensions/stable-diffusion-webui-rembg && \
-	git clone --depth 1 https://github.com/ashen-sensored/stable-diffusion-webui-two-shot /content/stable-diffusion-webui/extensions/stable-diffusion-webui-two-shot && \
-	git clone --depth 1 https://github.com/thomasasfk/sd-webui-aspect-ratio-helper /content/stable-diffusion-webui/extensions/sd-webui-aspect-ratio-helper && \
-	git clone --depth 1 https://github.com/tjm35/asymmetric-tiling-sd-webui /content/stable-diffusion-webui/extensions/asymmetric-tiling-sd-webui && \
+    git clone --depth 1 https://github.com/deforum-art/deforum-for-automatic1111-webui /content/stable-diffusion-webui/extensions/deforum-for-automatic1111-webui && \
+    git clone --depth 1 https://github.com/AlUlkesh/stable-diffusion-webui-images-browser /content/stable-diffusion-webui/extensions/stable-diffusion-webui-images-browser && \
+    git clone --depth 1 https://github.com/camenduru/stable-diffusion-webui-huggingface /content/stable-diffusion-webui/extensions/stable-diffusion-webui-huggingface && \
+    git clone --depth 1 https://github.com/camenduru/sd-civitai-browser /content/stable-diffusion-webui/extensions/sd-civitai-browser && \
+    git clone --depth 1 https://github.com/kohya-ss/sd-webui-additional-networks /content/stable-diffusion-webui/extensions/sd-webui-additional-networks && \
+    git clone --depth 1 https://github.com/Mikubill/sd-webui-controlnet /content/stable-diffusion-webui/extensions/sd-webui-controlnet && \
+    git clone --depth 1 https://github.com/fkunn1326/openpose-editor /content/stable-diffusion-webui/extensions/openpose-editor && \
+    git clone --depth 1 https://github.com/jexom/sd-webui-depth-lib /content/stable-diffusion-webui/extensions/sd-webui-depth-lib && \
+    git clone --depth 1 https://github.com/hnmr293/posex /content/stable-diffusion-webui/extensions/posex && \
+    git clone --depth 1 https://github.com/nonnonstop/sd-webui-3d-open-pose-editor /content/stable-diffusion-webui/extensions/sd-webui-3d-open-pose-editor && \
+    git clone --depth 1 https://github.com/camenduru/sd-webui-tunnels /content/stable-diffusion-webui/extensions/sd-webui-tunnels && \
+    git clone --depth 1 https://github.com/etherealxx/batchlinks-webui /content/stable-diffusion-webui/extensions/batchlinks-webui && \
+    git clone --depth 1 https://github.com/catppuccin/stable-diffusion-webui /content/stable-diffusion-webui/extensions/stable-diffusion-webui-catppuccin && \
+    git clone --depth 1 https://github.com/camenduru/a1111-sd-webui-locon /content/stable-diffusion-webui/extensions/a1111-sd-webui-locon && \
+    git clone --depth 1 https://github.com/AUTOMATIC1111/stable-diffusion-webui-rembg /content/stable-diffusion-webui/extensions/stable-diffusion-webui-rembg && \
+    git clone --depth 1 https://github.com/ashen-sensored/stable-diffusion-webui-two-shot /content/stable-diffusion-webui/extensions/stable-diffusion-webui-two-shot && \
+    git clone --depth 1 https://github.com/thomasasfk/sd-webui-aspect-ratio-helper /content/stable-diffusion-webui/extensions/sd-webui-aspect-ratio-helper && \
+    git clone --depth 1 https://github.com/tjm35/asymmetric-tiling-sd-webui /content/stable-diffusion-webui/extensions/asymmetric-tiling-sd-webui && \
     git clone --depth 1 https://github.com/DominikDoom/a1111-sd-webui-tagcomplete /content/stable-diffusion-webui/extensions/a1111-sd-webui-tagcomplete && \
     git clone --depth 1 https://github.com/qwopqwop200/stable-diffusion-webui-promptgen-danbooru /content/stable-diffusion-webui/extensions/stable-diffusion-webui-promptgen-danbooru && \
     cd /content/stable-diffusion-webui && git reset --hard
 
 RUN echo -e "\
-\nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/control_v11e_sd15_ip2p_fp16.safetensors \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11e_sd15_ip2p_fp16.safetensors \
-\nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/control_v11e_sd15_shuffle_fp16.safetensors \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11e_sd15_shuffle_fp16.safetensors \
-\nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/control_v11p_sd15_canny_fp16.safetensors \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11p_sd15_canny_fp16.safetensors \
-\nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/control_v11f1p_sd15_depth_fp16.safetensors \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11f1p_sd15_depth_fp16.safetensors \
-\nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/control_v11p_sd15_inpaint_fp16.safetensors \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11p_sd15_inpaint_fp16.safetensors \
-\nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/control_v11p_sd15_lineart_fp16.safetensors \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11p_sd15_lineart_fp16.safetensors \
-\nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/control_v11p_sd15_mlsd_fp16.safetensors \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11p_sd15_mlsd_fp16.safetensors \
-\nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/control_v11p_sd15_normalbae_fp16.safetensors \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11p_sd15_normalbae_fp16.safetensors \
-\nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/control_v11p_sd15_openpose_fp16.safetensors \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11p_sd15_openpose_fp16.safetensors \
-\nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/control_v11p_sd15_scribble_fp16.safetensors \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11p_sd15_scribble_fp16.safetensors \
-\nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/control_v11p_sd15_seg_fp16.safetensors \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11p_sd15_seg_fp16.safetensors \
-\nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/control_v11p_sd15_softedge_fp16.safetensors \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11p_sd15_softedge_fp16.safetensors \
-\nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/control_v11p_sd15s2_lineart_anime_fp16.safetensors \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11p_sd15s2_lineart_anime_fp16.safetensors \
-\nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/control_v11f1e_sd15_tile_fp16.safetensors \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11f1e_sd15_tile_fp16.safetensors \
-\nhttps://huggingface.co/ckpt/ControlNet-v1-1/raw/main/control_v11e_sd15_ip2p_fp16.yaml \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11e_sd15_ip2p_fp16.yaml \
-\nhttps://huggingface.co/ckpt/ControlNet-v1-1/raw/main/control_v11e_sd15_shuffle_fp16.yaml \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11e_sd15_shuffle_fp16.yaml \
-\nhttps://huggingface.co/ckpt/ControlNet-v1-1/raw/main/control_v11p_sd15_canny_fp16.yaml \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11p_sd15_canny_fp16.yaml \
-\nhttps://huggingface.co/ckpt/ControlNet-v1-1/raw/main/control_v11f1p_sd15_depth_fp16.yaml \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11f1p_sd15_depth_fp16.yaml \
-\nhttps://huggingface.co/ckpt/ControlNet-v1-1/raw/main/control_v11p_sd15_inpaint_fp16.yaml \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11p_sd15_inpaint_fp16.yaml \
-\nhttps://huggingface.co/ckpt/ControlNet-v1-1/raw/main/control_v11p_sd15_lineart_fp16.yaml \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11p_sd15_lineart_fp16.yaml \
-\nhttps://huggingface.co/ckpt/ControlNet-v1-1/raw/main/control_v11p_sd15_mlsd_fp16.yaml \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11p_sd15_mlsd_fp16.yaml \
-\nhttps://huggingface.co/ckpt/ControlNet-v1-1/raw/main/control_v11p_sd15_normalbae_fp16.yaml \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11p_sd15_normalbae_fp16.yaml \
-\nhttps://huggingface.co/ckpt/ControlNet-v1-1/raw/main/control_v11p_sd15_openpose_fp16.yaml \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11p_sd15_openpose_fp16.yaml \
-\nhttps://huggingface.co/ckpt/ControlNet-v1-1/raw/main/control_v11p_sd15_scribble_fp16.yaml \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11p_sd15_scribble_fp16.yaml \
-\nhttps://huggingface.co/ckpt/ControlNet-v1-1/raw/main/control_v11p_sd15_seg_fp16.yaml \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11p_sd15_seg_fp16.yaml \
-\nhttps://huggingface.co/ckpt/ControlNet-v1-1/raw/main/control_v11p_sd15_softedge_fp16.yaml \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11p_sd15_softedge_fp16.yaml \
-\nhttps://huggingface.co/ckpt/ControlNet-v1-1/raw/main/control_v11p_sd15s2_lineart_anime_fp16.yaml \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11p_sd15s2_lineart_anime_fp16.yaml \
-\nhttps://huggingface.co/ckpt/ControlNet-v1-1/raw/main/control_v11f1e_sd15_tile_fp16.yaml \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11f1e_sd15_tile_fp16.yaml \
-\nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/t2iadapter_style_sd14v1.pth \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=t2iadapter_style_sd14v1.pth \
-\nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/t2iadapter_sketch_sd14v1.pth \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=t2iadapter_sketch_sd14v1.pth \
-\nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/t2iadapter_seg_sd14v1.pth \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=t2iadapter_seg_sd14v1.pth \
-\nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/t2iadapter_openpose_sd14v1.pth \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=t2iadapter_openpose_sd14v1.pth \
-\nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/t2iadapter_keypose_sd14v1.pth \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=t2iadapter_keypose_sd14v1.pth \
-\nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/t2iadapter_depth_sd14v1.pth \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=t2iadapter_depth_sd14v1.pth \
-\nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/t2iadapter_color_sd14v1.pth \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=t2iadapter_color_sd14v1.pth \
-\nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/t2iadapter_canny_sd14v1.pth \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=t2iadapter_canny_sd14v1.pth \
-\nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/t2iadapter_canny_sd15v2.pth \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=t2iadapter_canny_sd15v2.pth \
-\nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/t2iadapter_depth_sd15v2.pth \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=t2iadapter_depth_sd15v2.pth \
-\nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/t2iadapter_sketch_sd15v2.pth \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=t2iadapter_sketch_sd15v2.pth \
-\nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/t2iadapter_zoedepth_sd15v1.pth \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=t2iadapter_zoedepth_sd15v1.pth \
-\n\
-\nhttps://huggingface.co/ckpt/anything-v3.0/resolve/main/Anything-V3.0-pruned.ckpt \n dir=/content/stable-diffusion-webui/models/Stable-diffusion \n out=Anything-V3.0-pruned.ckpt \
-\nhttps://huggingface.co/ckpt/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.ckpt \n dir=/content/stable-diffusion-webui/models/Stable-diffusion \n out=Anything-V3.0-pruned.vae.pt \
-\n" | aria2c --console-log-level=error --continue --max-connection-per-server 16 --split 16 --min-split-size 10M --input-file -
+    \nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/control_v11e_sd15_ip2p_fp16.safetensors \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11e_sd15_ip2p_fp16.safetensors \
+    \nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/control_v11e_sd15_shuffle_fp16.safetensors \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11e_sd15_shuffle_fp16.safetensors \
+    \nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/control_v11p_sd15_canny_fp16.safetensors \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11p_sd15_canny_fp16.safetensors \
+    \nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/control_v11f1p_sd15_depth_fp16.safetensors \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11f1p_sd15_depth_fp16.safetensors \
+    \nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/control_v11p_sd15_inpaint_fp16.safetensors \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11p_sd15_inpaint_fp16.safetensors \
+    \nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/control_v11p_sd15_lineart_fp16.safetensors \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11p_sd15_lineart_fp16.safetensors \
+    \nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/control_v11p_sd15_mlsd_fp16.safetensors \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11p_sd15_mlsd_fp16.safetensors \
+    \nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/control_v11p_sd15_normalbae_fp16.safetensors \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11p_sd15_normalbae_fp16.safetensors \
+    \nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/control_v11p_sd15_openpose_fp16.safetensors \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11p_sd15_openpose_fp16.safetensors \
+    \nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/control_v11p_sd15_scribble_fp16.safetensors \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11p_sd15_scribble_fp16.safetensors \
+    \nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/control_v11p_sd15_seg_fp16.safetensors \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11p_sd15_seg_fp16.safetensors \
+    \nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/control_v11p_sd15_softedge_fp16.safetensors \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11p_sd15_softedge_fp16.safetensors \
+    \nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/control_v11p_sd15s2_lineart_anime_fp16.safetensors \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11p_sd15s2_lineart_anime_fp16.safetensors \
+    \nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/control_v11f1e_sd15_tile_fp16.safetensors \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11f1e_sd15_tile_fp16.safetensors \
+    \nhttps://huggingface.co/ckpt/ControlNet-v1-1/raw/main/control_v11e_sd15_ip2p_fp16.yaml \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11e_sd15_ip2p_fp16.yaml \
+    \nhttps://huggingface.co/ckpt/ControlNet-v1-1/raw/main/control_v11e_sd15_shuffle_fp16.yaml \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11e_sd15_shuffle_fp16.yaml \
+    \nhttps://huggingface.co/ckpt/ControlNet-v1-1/raw/main/control_v11p_sd15_canny_fp16.yaml \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11p_sd15_canny_fp16.yaml \
+    \nhttps://huggingface.co/ckpt/ControlNet-v1-1/raw/main/control_v11f1p_sd15_depth_fp16.yaml \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11f1p_sd15_depth_fp16.yaml \
+    \nhttps://huggingface.co/ckpt/ControlNet-v1-1/raw/main/control_v11p_sd15_inpaint_fp16.yaml \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11p_sd15_inpaint_fp16.yaml \
+    \nhttps://huggingface.co/ckpt/ControlNet-v1-1/raw/main/control_v11p_sd15_lineart_fp16.yaml \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11p_sd15_lineart_fp16.yaml \
+    \nhttps://huggingface.co/ckpt/ControlNet-v1-1/raw/main/control_v11p_sd15_mlsd_fp16.yaml \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11p_sd15_mlsd_fp16.yaml \
+    \nhttps://huggingface.co/ckpt/ControlNet-v1-1/raw/main/control_v11p_sd15_normalbae_fp16.yaml \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11p_sd15_normalbae_fp16.yaml \
+    \nhttps://huggingface.co/ckpt/ControlNet-v1-1/raw/main/control_v11p_sd15_openpose_fp16.yaml \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11p_sd15_openpose_fp16.yaml \
+    \nhttps://huggingface.co/ckpt/ControlNet-v1-1/raw/main/control_v11p_sd15_scribble_fp16.yaml \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11p_sd15_scribble_fp16.yaml \
+    \nhttps://huggingface.co/ckpt/ControlNet-v1-1/raw/main/control_v11p_sd15_seg_fp16.yaml \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11p_sd15_seg_fp16.yaml \
+    \nhttps://huggingface.co/ckpt/ControlNet-v1-1/raw/main/control_v11p_sd15_softedge_fp16.yaml \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11p_sd15_softedge_fp16.yaml \
+    \nhttps://huggingface.co/ckpt/ControlNet-v1-1/raw/main/control_v11p_sd15s2_lineart_anime_fp16.yaml \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11p_sd15s2_lineart_anime_fp16.yaml \
+    \nhttps://huggingface.co/ckpt/ControlNet-v1-1/raw/main/control_v11f1e_sd15_tile_fp16.yaml \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=control_v11f1e_sd15_tile_fp16.yaml \
+    \nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/t2iadapter_style_sd14v1.pth \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=t2iadapter_style_sd14v1.pth \
+    \nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/t2iadapter_sketch_sd14v1.pth \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=t2iadapter_sketch_sd14v1.pth \
+    \nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/t2iadapter_seg_sd14v1.pth \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=t2iadapter_seg_sd14v1.pth \
+    \nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/t2iadapter_openpose_sd14v1.pth \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=t2iadapter_openpose_sd14v1.pth \
+    \nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/t2iadapter_keypose_sd14v1.pth \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=t2iadapter_keypose_sd14v1.pth \
+    \nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/t2iadapter_depth_sd14v1.pth \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=t2iadapter_depth_sd14v1.pth \
+    \nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/t2iadapter_color_sd14v1.pth \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=t2iadapter_color_sd14v1.pth \
+    \nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/t2iadapter_canny_sd14v1.pth \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=t2iadapter_canny_sd14v1.pth \
+    \nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/t2iadapter_canny_sd15v2.pth \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=t2iadapter_canny_sd15v2.pth \
+    \nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/t2iadapter_depth_sd15v2.pth \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=t2iadapter_depth_sd15v2.pth \
+    \nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/t2iadapter_sketch_sd15v2.pth \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=t2iadapter_sketch_sd15v2.pth \
+    \nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/t2iadapter_zoedepth_sd15v1.pth \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=t2iadapter_zoedepth_sd15v1.pth \
+    \n\
+    \nhttps://huggingface.co/ckpt/anything-v3.0/resolve/main/Anything-V3.0-pruned.ckpt \n dir=/content/stable-diffusion-webui/models/Stable-diffusion \n out=Anything-V3.0-pruned.ckpt \
+    \nhttps://huggingface.co/ckpt/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.ckpt \n dir=/content/stable-diffusion-webui/models/Stable-diffusion \n out=Anything-V3.0-pruned.vae.pt \
+    \n" | aria2c --console-log-level=error --continue --max-connection-per-server 16 --split 16 --min-split-size 10M --input-file -
 
 RUN sed -i -e '''/from modules import launch_utils/a\import os''' /content/stable-diffusion-webui/launch.py && \
     sed -i -e '''/        prepare_environment()/a\        os.system\(f\"""sed -i -e ''\"s/dict()))/dict())).cuda()/g\"'' /content/stable-diffusion-webui/repositories/stable-diffusion-stability-ai/ldm/util.py""")''' /content/stable-diffusion-webui/launch.py && \
