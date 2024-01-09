@@ -95,6 +95,6 @@ ADD --chown=user https://huggingface.co/ckpt/sd14/resolve/main/sd-v1-4.ckpt /con
 
 RUN sed -i -e 's/\["sd_model_checkpoint"\]/\["sd_model_checkpoint","sd_vae","CLIP_stop_at_last_layers"\]/g' /content/stable-diffusion-webui/modules/shared_options.py
 
-CMD cd stable-diffusion-webui && python launch.py --listen --xformers --enable-insecure-extension-access --theme dark --skip-torch-cuda-test
+CMD cd stable-diffusion-webui && python launch.py --listen --xformers --enable-insecure-extension-access --theme dark --skip-torch-cuda-test --api
 
 EXPOSE 7860
