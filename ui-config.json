@@ -2,7 +2,7 @@
     "txt2img/Prompt/visible": true,
     "txt2img/Prompt/value": "by berseepon09, Questionable, made in abyss, nanachi, lagomorph, leporid, mammal, rabbit, anthro, biped, bodily fluids, breasts, brown body, brown fur, clothed, clothing, curvy figure, female, fur, green eyes, hair, lactating, lactating through clothing, nipple outline, one-piece swimsuit, overweight, overweight anthro, overweight female, solo, swimwear, voluptuous, wet, wet clothing, white hair, 2023, digital media (artwork), hi res, ",
     "txt2img/Negative prompt/visible": true,
-    "txt2img/Negative prompt/value": "comic, black background, no pupils",
+    "txt2img/Negative prompt/value": "comic, black background, no pupils, watermark, signature, english text, text, dialogue",
     "txt2img/Interrupt/visible": true,
     "txt2img/Skip/visible": true,
     "txt2img/Generate/visible": true,
