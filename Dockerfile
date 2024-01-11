@@ -1,4 +1,4 @@
-# to build and run: docker build -t docker-sd-webui:latest .; docker run -it -p 7860:7860 --name "docker-sd-webui" --rm --gpus all docker-sd-webui:latest
+# to build and run: docker build --no-cache -t docker-sd-webui:latest .; docker run -it -p 7860:7860 --name "docker-sd-webui" --rm --gpus all docker-sd-webui:latest
 FROM ubuntu:22.04
 ENV DEBIAN_FRONTEND noninteractive
 WORKDIR /content
