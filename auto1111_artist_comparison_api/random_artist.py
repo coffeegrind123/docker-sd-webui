@@ -34,7 +34,7 @@ for artist in selected_artists:
     colored_artist_names.append(f'{color}{artist["name"]} ({count}){color_end}')
 
 # Create a list of artist names without the color escape sequence
-plain_artist_names = [f'{artist["name"]} ({artist["post_count"]})' for artist in selected_artists]
+plain_artist_names = [f'{artist["name"]}' for artist in selected_artists]
 
 # Format the output with colored artist names
 colored_output = 'by ' + ', by '.join(colored_artist_names)
