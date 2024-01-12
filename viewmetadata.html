@@ -11,32 +11,37 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      background-color: #f2f2f2;
+      color: #f3f4f6;
+      background-color: #0b0f19;
       padding: 20px;
     }
     #dropzone {
       width: 300px;
       height: 150px;
-      border: 2px dashed #ccc;
+      border: 2px dashed #374151;
       text-align: center;
       padding: 50px;
       font-size: 20px;
-      background-color: #fff;
+      background-color: #1e1e2e;
       cursor: pointer;
       transition: background-color 0.3s ease;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
     }
     #dropzone:hover {
-      background-color: #eaeaea;
+      background-color: #374151 !important;
     }
     #chunkData {
       margin-top: 20px;
       font-family: monospace;
       white-space: pre-wrap;
-      background-color: #fff;
+      background-color: #111827;
       padding: 10px;
       max-width: 100%;
       overflow-x: auto;
       display: none; /* Initially hide the chunk data */
+      border-radius: 15px;
     }
     #imageContainer {
       max-width: 100%;
@@ -66,12 +71,16 @@
         reader.onload = function(event) {
           var arrayBuffer = event.target.result;
           var bytes = new Uint8Array(arrayBuffer);
-          var chunkData = getChunkData(bytes);
-          document.getElementById("chunkData").textContent = chunkData;
-          document.getElementById("image").src = URL.createObjectURL(file);
-          document.getElementById("chunkData").style.display = "block"; // Show the chunk data
-          document.getElementById("imageContainer").style.display = "block"; // Show the image container
-          resetFileInput(); // Reset the file input
+          if (checkPNGSignature(bytes)) {
+            var chunkData = getChunkData(bytes);
+            document.getElementById("chunkData").textContent = chunkData;
+            document.getElementById("image").src = URL.createObjectURL(file);
+            document.getElementById("chunkData").style.display = "block"; // Show the chunk data
+            document.getElementById("imageContainer").style.display = "block"; // Show the image container
+            resetFileInput(); // Reset the file input
+          } else {
+            alert("Please select a valid PNG file.");
+          }
         };
         reader.readAsArrayBuffer(file);
       } else {
@@ -89,7 +98,8 @@
         if (offset === 33) {
           var length = readUInt32(bytes, offset);
           var data = readChunkData(bytes, offset + 8, length);
-          chunkData += "Chunk data: " + data + "\n";
+          var trimmedData = data.replace(/parameters\b\S?\s*/, "").trim(); // Trim the word "parameters" and leading/trailing spaces
+          chunkData += trimmedData + "\n";
         }
         offset += length + 12;
       }
@@ -128,6 +138,25 @@
       });
     }
 
+    function checkPNGSignature(bytes) {
+      var signature = [137, 80, 78, 71, 13, 10, 26, 10]; // PNG signature bytes
+      for (var i = 0; i < signature.length; i++) {
+        if (bytes[i] !== signature[i]) {
+          return false;
+        }
+      }
+      
+      var chunkOffset = 33;
+      var chunkLength = readUInt32(bytes, chunkOffset);
+      var chunkData = readChunkData(bytes, chunkOffset + 8, chunkLength);
+      if (!chunkData.startsWith("parameters")) {
+        return false;
+      }
+      
+      return true;
+    }
+
+
     var dropzone = document.getElementById("dropzone");
     var fileInputContainer = document.getElementById("fileInputContainer");
 
@@ -146,17 +175,17 @@
 
     dropzone.addEventListener("dragover", function(event) {
       event.preventDefault();
-      dropzone.style.backgroundColor = "#eaeaea";
+      dropzone.style.backgroundColor = "#374151";
     });
 
     dropzone.addEventListener("dragleave", function(event) {
       event.preventDefault();
-      dropzone.style.backgroundColor = "#fff";
+      dropzone.style.backgroundColor = "#1e1e2e";
     });
 
     dropzone.addEventListener("drop", function(event) {
       event.preventDefault();
-      dropzone.style.backgroundColor = "#fff";
+      dropzone.style.backgroundColor = "#1e1e2e";
       var file = event.dataTransfer.files[0];
       handleFile(file);
     });
