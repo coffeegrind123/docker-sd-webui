@@ -12,7 +12,7 @@ from PIL import Image
 
 async def main():   
     # Where images should be saved
-    save_folder = os.path.join(os.getcwd(), 'nsfw_anthro_nude_crouching_presenting_post_count_jpg')
+    save_folder = os.path.join(os.getcwd(), 'images')
 
     # Create the directory if it doesn't exist
     os.makedirs(save_folder, exist_ok=True)
