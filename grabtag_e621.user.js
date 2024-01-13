@@ -14,14 +14,14 @@ document.addEventListener('keydown', function(event) {
         var out = "";
         var rating = document.querySelector("#post-rating-text").innerText;
 
-        var artistCount = document.querySelectorAll("#tag-list > ul.artist-tag-list > li a.search-tag").length;
-        for (let index = 0; index < artistCount; index++) {
-            var artistTag = document.querySelector("#tag-list > ul.artist-tag-list > li:nth-child(" + (index + 1) + ") > a.search-tag");
-            if (artistTag && artistTag.parentElement && artistTag.parentElement.parentElement) {
-                var artistTags = artistTag.innerText;
-                out += "by " + artistTags + ", ";
-            }
-        }
+        //var artistCount = document.querySelectorAll("#tag-list > ul.artist-tag-list > li a.search-tag").length;
+        //for (let index = 0; index < artistCount; index++) {
+        //    var artistTag = document.querySelector("#tag-list > ul.artist-tag-list > li:nth-child(" + (index + 1) + ") > a.search-tag");
+        //    if (artistTag && artistTag.parentElement && artistTag.parentElement.parentElement) {
+        //        var artistTags = artistTag.innerText;
+        //        out += "by " + artistTags + ", ";
+        //    }
+        //}
 
         out += rating + ", ";
 
