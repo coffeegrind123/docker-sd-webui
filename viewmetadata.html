@@ -52,18 +52,50 @@
     #imageContainer img {
       max-height: inherit;
     }
+    #urlContainer {
+      display: flex;
+      width: 400px;
+      margin-top: 20px;
+    }
+    #urlInput {
+      display: block;
+      border-radius: 15px 0px 0px 15px;
+      height: 35px;
+      width: 400px;
+      border: 0;
+      font-family: 'Roboto', sans-serif;
+      font-size: 20px;
+      background-color: #1e1e2e;
+      color: #f3f4f6 !important;
+      box-sizing: border-box;
+    }
+    #submitButton {
+      display: block;
+      border-radius: 0px 15px 15px 0px;
+      height: 35px;
+      width: 100px;
+      border: 0;
+      font-family: 'Roboto', sans-serif;
+      font-size: 20px;
+      background-color: #374151;
+      color: #f3f4f6 !important;
+    }
   </style>
 </head>
 <body>
   <label for="fileInput">
     <div id="dropzone">Click or drag and drop a PNG file here</div>
   </label>
+  <div id="urlContainer">
+    <input type="text" id="urlInput" placeholder="Enter image URL">
+    <button id="submitButton">Submit</button>
+  </div>
   <div id="fileInputContainer" style="display: none;"></div>
   <div id="chunkData"></div>
   <div id="imageContainer">
     <img id="image" alt="Dropped Image">
   </div>
-
+  
   <script>
     function handleFile(file) {
       if (file) {
@@ -89,6 +121,28 @@
         document.getElementById("chunkData").style.display = "none"; // Hide the chunk data
         document.getElementById("imageContainer").style.display = "none"; // Hide the image container
       }
+    }
+
+    function handleURL(url) {
+      var proxyURL = "https://corsproxy.io/?" + encodeURIComponent(url);
+      fetch(proxyURL)
+        .then(response => response.arrayBuffer())
+        .then(arrayBuffer => {
+          var bytes = new Uint8Array(arrayBuffer);
+          if (checkPNGSignature(bytes)) {
+            var chunkData = getChunkData(bytes);
+            document.getElementById("chunkData").textContent = chunkData;
+            document.getElementById("image").src = proxyURL;
+            document.getElementById("chunkData").style.display = "block"; // Show the chunk data
+            document.getElementById("imageContainer").style.display = "block"; // Show the image container
+            document.getElementById("urlInput").value = ""; // Clear the URL input
+          } else {
+            alert("Please enter a valid PNG image URL.");
+          }
+        })
+        .catch(error => {
+          alert("Failed to load the image. Please enter a valid URL.");
+        });
     }
 
     function getChunkData(bytes) {
@@ -156,9 +210,10 @@
       return true;
     }
 
-
     var dropzone = document.getElementById("dropzone");
     var fileInputContainer = document.getElementById("fileInputContainer");
+    var urlInput = document.getElementById("urlInput");
+    var submitButton = document.getElementById("submitButton");
 
     dropzone.addEventListener("click", function(event) {
       event.preventDefault(); // Prevent the default behavior of the file input
@@ -190,8 +245,26 @@
       handleFile(file);
     });
 
+    urlInput.addEventListener("keyup", function(event) {
+      if (event.key === "Enter") {
+        var url = urlInput.value.trim();
+        if (url !== "") {
+          handleURL(url);
+        }
+      }
+    });
+
+    submitButton.addEventListener("click", function() {
+      var url = urlInput.value.trim();
+      if (url !== "") {
+        handleURL(url);
+      }
+    });
+
     // Create the initial file input
     resetFileInput();
+    document.getElementById("urlInput").style.display = "block"; // Show the URL input
+    document.getElementById("submitButton").style.display = "block"; // Show the submit button
   </script>
 </body>
 </html>
