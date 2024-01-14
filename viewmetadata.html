@@ -59,6 +59,7 @@
     }
     #urlInput {
       display: block;
+      padding: 25px;
       border-radius: 15px 0px 0px 15px;
       height: 35px;
       width: 400px;
@@ -72,20 +73,27 @@
     #submitButton {
       display: block;
       border-radius: 0px 15px 15px 0px;
-      height: 35px;
-      width: 100px;
+      height: 50px;
+      width: 120px;
       border: 0;
       font-family: 'Roboto', sans-serif;
       font-size: 20px;
       background-color: #374151;
       color: #f3f4f6 !important;
+      cursor: pointer;
+    }
+    .info {
+      font-size: 20px;
+      margin: 20px 0px 0px 0px;
     }
   </style>
 </head>
 <body>
+  <h2>Stable Diffusion Png Metadata Viewer</h2>
   <label for="fileInput">
     <div id="dropzone">Click or drag and drop a PNG file here</div>
   </label>
+  <p class="info">Or view from remote url</p>
   <div id="urlContainer">
     <input type="text" id="urlInput" placeholder="Enter image URL">
     <button id="submitButton">Submit</button>
