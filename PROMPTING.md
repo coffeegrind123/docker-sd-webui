@@ -40,6 +40,11 @@ front view? put side view and rear view in negative
 then you gotta be hip to thigns that could imply other things
 like putting butt or ass could imply rear view or side view 
 
+Regarding negatives, my advice would be to have it completely empty and then add tags you don't want to see when you start to notice in the images, because a lot of negatives you have now don't really help that much 
+
+im not going to explain the specifics of classifier free guidance, but in essence the negative prompt is a way of hijacking the cfg system to tell the model what to generally drift away from during inference
+not what to not do, what to sort of... drift away from
+
 a token is word (or set of words) between two comas
 
 break is for breaking up prompts since it handles about 75 tokens at a time
