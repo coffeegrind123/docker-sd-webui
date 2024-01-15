@@ -6,3 +6,5 @@ Focus on using e621 tags only if you can, especially when using EasyFluff.
 When thinking about increasing the weight on a tag, think about this. A1111 reduces the weight of every other tag so that the average is still 1 - so you aren't really increasing the emphasis, you're decreasing the emphasis of everything else! Keep it to an absolute minimum. There are tags where it's warranted, especially low post count tags, but it's not common
 You can end up reducing the weight of tags you want so much they are completely ignored if you go crazy with it
 And if everything has increased weight, nothing does - it's getting averaged back to 1 anyways
+
+Amazing for tags that can cause deformation, like "pawpads" can force pawpads to gen even if the paw isn't in a position for that to be possible in. [:pawpads:.25] pretty much solves the issue by not adding pawpads to the prompt until 25% of the way into generation (edited)
