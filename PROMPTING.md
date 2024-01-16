@@ -71,5 +71,8 @@ there's prompt schedule stuff
 [this:10] does not use the tag until after 10 steps have completed
 [this::10] uses the tag for 10 steps but not any more after 
 
+Also don't use weights as high as 1.5 unless it is an extremely obscure tag and you've tried it at a more reasonable weight in the 1.05 - 1.2 range.
+Pushing the embedding that far away from the centroid does not intensify the meaning. It starts to lose meaning and just scramble things.
+
 
 from:terraraptor has:image 
