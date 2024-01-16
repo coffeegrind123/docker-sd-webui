@@ -67,5 +67,9 @@ And as a addition to inpainting, prompt editing is an extremely powerful tool. I
 
 Amazing for tags that can cause deformation, like "pawpads" can force pawpads to gen even if the paw isn't in a position for that to be possible in. [:pawpads:.25] pretty much solves the issue by not adding pawpads to the prompt until 25% of the way into generation (edited)
 
+there's prompt schedule stuff 
+[this:10] does not use the tag until after 10 steps have completed
+[this::10] uses the tag for 10 steps but not any more after 
+
 
 from:terraraptor has:image 
