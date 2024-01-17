@@ -126,3 +126,33 @@ which I guess also helps a heavy "character detail" chunk from overpowering all 
 
 In general it's good to try and learn with just prompts <75
 If you don't go over it at all it never gets complicated
+
+
+Square brackets make it a prompt edit instead
+Plus the extra colon yes
+From a to b after x steps
+[a : b : x]
+Square brackets are also used for alternating prompts [ a | b] will switch between a and b every step
+Good for doing better species hybrids
+
+I am seeing a remarkable fidelity boost with by (artist|artist|artist|artist) over by artist, by artist, by artist
+As in, the details of each combined style is a lot more fleshed out.
+
+humanoid hands
+the above tag fixes hands
+
+Trying to aim at a specific chunk of the body to make a specific thing that very rarely exists on e621 is definitely an inpainting affair.
+
+
+I'd personally handle it like this:
+Generate a smooth robot body (like image linked) (or, if you want a convincingly organic body, just gen a normal anthro without robot tags)
+Sketch out the exposed waist how you imagine it to look (does not need to be good, crappy MS paint blobs will suffice)
+Inpaint over the area to be changed, have more than one image generate at a time.
+Choose the best out of a bunch, then send that back through inpainting to get even closer to what you were imagining.
+
+Generate image in txt2img
+Copy+paste (or save+open) image into an image editing / painting program. If unsure what program to use, look into "paint dot net" (not an online tool; it's a program)
+Use brush tool to draw what you want over it, on a new layer to be safe
+Merge any top layers into the edited image, then copy+paste (or save+upload) image back into your inpainting tab.
+
+Might need to create some contrast between the exposed section and the normal sections, through a thin black line. Unless those grey patches are meant to be extensions of the already-existing metal in the image?
