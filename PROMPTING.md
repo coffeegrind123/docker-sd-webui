@@ -85,3 +85,44 @@ no because in the first one you have 2 independent things being put at 1.5, in t
 
 
 from:terraraptor has:image 
+
+
+
+
+
+
+Using BREAK is literally just 'deciding' where the chunk borders are
+Unless your prompt is under 75 tokens
+Understand how each chunks weighs against another and how it affects your emphasis
+
+I thought I was supposed to use the BREAK after every 75 tokens
+It'll do that automatically if you don't
+But doing it manually can prevent concepts being fragmented
+A1111 by default moves anything within 20 tokens to the next chunk to prevent this
+Which is why sometimes the token count seems to 'skip'
+
+
+Are token's prioritized by weight across all chunks, or for each specific chunk?
+I guess, put another way, are all the chunks evaluated at the same time? 
+
+Good question, all I know is that weights get normalised across the whole prompt
+Understand how each chunks weighs against another and how it affects your emphasis
+But each chunk also has equal power
+I'd you have one tag on its own in a chunk it'll be more impactful than each individual tag in another chunk
+
+Then there's the whole 'tags towards the front are more powerful than those towards the back'... It's complicated to stay consistent
+
+I was using breaks as a way to thematically separate topics.
+(all my subject tokens)
+BREAK 
+(all my environment/scene tokens)
+BREAK
+(all my "view" tokens)
+
+Yeah that's a good practice generally
+Keeping all your 'composition' related tags in one chunk means it's much harder to break
+And style in another
+which I guess also helps a heavy "character detail" chunk from overpowering all your environment and compositional chunks.
+
+In general it's good to try and learn with just prompts <75
+If you don't go over it at all it never gets complicated
