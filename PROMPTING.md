@@ -74,5 +74,14 @@ there's prompt schedule stuff
 Also don't use weights as high as 1.5 unless it is an extremely obscure tag and you've tried it at a more reasonable weight in the 1.05 - 1.2 range.
 Pushing the embedding that far away from the centroid does not intensify the meaning. It starts to lose meaning and just scramble things.
 
+Quick question - does the (token:1.5) syntax work for groups of tokens? (token1, token2:1.5)
+yes, but it's gonna push the whole segment up, including commas
+we use them as separators, but they mean nothing, and their behavior when being pushed up is not really defined
+it can work fine, it can destroy the whole image, depends on the model
+(token1:1.5), (token2:1.5) 
+same as
+(token1,token2:1.5)?
+no because in the first one you have 2 independent things being put at 1.5, in the second one you have token1,token2 as a whole being put at 1.5
+
 
 from:terraraptor has:image 
