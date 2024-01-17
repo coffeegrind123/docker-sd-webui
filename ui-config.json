@@ -356,7 +356,7 @@
     "txt2img/[StyleAlign] Align image style in the batch./visible": true,
     "txt2img/[StyleAlign] Align image style in the batch./value": false,
     "customscript/rp.py/txt2img/Active/visible": true,
-    "customscript/rp.py/txt2img/Active/value": false,
+    "customscript/rp.py/txt2img/Active/value": true,
     "customscript/rp.py/txt2img/Generation mode/visible": true,
     "customscript/rp.py/txt2img/Generation mode/value": "Attention",
     "customscript/rp.py/txt2img/Base Ratio/visible": true,
