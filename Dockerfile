@@ -5,6 +5,9 @@ WORKDIR /content
 
 ENV TF_CPP_MIN_LOG_LEVEL 1
 
+ARG LISTEN_PORT="7860"
+ENV LISTEN_PORT=${LISTEN_PORT:-$LISTEN_PORT}
+
 RUN apt update && \
     apt install -y libgl1 libcairo2-dev pkg-config python3-dev python3-pip git aria2 wget unzip python-is-python3 && \
     rm -rf /var/lib/apt/lists/*
@@ -42,6 +45,8 @@ RUN git clone --depth 1 -b v2.7 https://github.com/camenduru/stable-diffusion-we
     git clone --depth 1 https://github.com/Seshelle/CFG_Rescale_webui /content/stable-diffusion-webui/extensions/CFG_Rescale_webui && \
     git clone --depth 1 https://github.com/hako-mikan/sd-webui-negpip /content/stable-diffusion-webui/extensions/sd-webui-negpip && \
     git clone --depth 1 https://github.com/hako-mikan/sd-webui-regional-prompter /content/stable-diffusion-webui/extensions/sd-webui-regional-prompter && \
+    git clone --depth 1 https://github.com/kousw/stable-diffusion-webui-daam && \
+    #git merge capricorncd/stable-diffusion-webui/master -m "Apply prompt commenting patch" && \
     cd /content/stable-diffusion-webui && git reset --hard
 
 RUN echo "\
@@ -100,6 +105,6 @@ RUN wget https://raw.githubusercontent.com/coffeegrind123/docker-sd-webui/fluffu
 
 RUN sed -i -e 's/\["sd_model_checkpoint"\]/\["sd_model_checkpoint","sd_vae","CLIP_stop_at_last_layers"\]/g' /content/stable-diffusion-webui/modules/shared_options.py
 
-CMD cd stable-diffusion-webui && python launch.py --listen --xformers --enable-insecure-extension-access --theme dark --skip-torch-cuda-test --api
-
 EXPOSE 7860
+
+CMD cd stable-diffusion-webui && python launch.py --listen --port $LISTEN_PORT --xformers --enable-insecure-extension-access --theme dark --skip-torch-cuda-test --api
