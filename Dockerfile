@@ -92,13 +92,13 @@ RUN echo "\
     \nhttps://huggingface.co/ckpt/ControlNet-v1-1/resolve/main/t2iadapter_zoedepth_sd15v1.pth \n dir=/content/stable-diffusion-webui/extensions/sd-webui-controlnet/models \n out=t2iadapter_zoedepth_sd15v1.pth \
     \n" | aria2c --console-log-level=error --continue --max-connection-per-server 16 --split 16 --min-split-size 10M --input-file -
 
-RUN aria2c --header 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.3' --console-log-level=error -c -s 16 -k 1M https://www.swisstransfer.com/api/download/1aa5051d-b437-4688-b76d-2d03375fe171 -d /tmp -o dl.zip && \
+RUN aria2c --header 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.3' --console-log-level=error -c -s 16 -k 1M https://www.swisstransfer.com/api/download/49ce4b58-384b-4a1e-ac9e-46fd6bc58c42 -d /tmp -o dl.zip && \
     unzip /tmp/dl.zip -d /tmp && \
-    tar -xzvf /tmp/fluffusion_r3_e10_704x_vpred.tar.gz -C /content/stable-diffusion-webui/models/Stable-diffusion && \
+    tar -xzvf /tmp/fluffusion_r3_e12_704x_vpred.tar.gz -C /content/stable-diffusion-webui/models/Stable-diffusion && \
     rm /tmp/dl.zip && \
-    rm /tmp/fluffusion_r3_e10_704x_vpred.tar.gz
+    rm /tmp/fluffusion_r3_e12_704x_vpred.tar.gz
 
-RUN wget https://raw.githubusercontent.com/coffeegrind123/docker-sd-webui/fluffusion/fluffusion_r3_eX_704x_vpred.yaml -O /content/stable-diffusion-webui/models/Stable-diffusion/fluffusion_r3_e10_704x_vpred.yaml
+RUN wget https://raw.githubusercontent.com/coffeegrind123/docker-sd-webui/fluffusion/fluffusion_r3_eX_704x_vpred.yaml -O /content/stable-diffusion-webui/models/Stable-diffusion/fluffusion_r3_e12_704x_vpred.yaml
 RUN wget https://raw.githubusercontent.com/coffeegrind123/docker-sd-webui/fluffusion/fluffusion_r3_tags.csv -O /content/stable-diffusion-webui/extensions/a1111-sd-webui-tagcomplete/tags/fluffusion_r3_tags.csv
 RUN wget https://raw.githubusercontent.com/coffeegrind123/docker-sd-webui/fluffusion/config.json -O /content/stable-diffusion-webui/config.json
 RUN wget https://raw.githubusercontent.com/coffeegrind123/docker-sd-webui/fluffusion/ui-config.json -O /content/stable-diffusion-webui/ui-config.json
