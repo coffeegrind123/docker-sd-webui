@@ -157,7 +157,5 @@ Merge any top layers into the edited image, then copy+paste (or save+upload) ima
 
 Might need to create some contrast between the exposed section and the normal sections, through a thin black line. Unless those grey patches are meant to be extensions of the already-existing metal in the image?
 
-so I've had a signficant boost in detail when using the following to prompt multiple artists:
-by {carrot|dacad|jay naylor|louart}
-as opposed to just by carrot, by dacad, by jay naylor, by louart
-I know it alternates the artists by step, but what could I be screwing up by doing it this way?
+BREAK for A1111 pads the 75 token chunk before it out to start whatever comes after at the begining of a new 75 token chunk. Putting BREAK and then all your artists after that could in theory help stop an artist from breaking across that 75 token boundary into two chunks, but it's certainly not required
+It does something else with the Regional Prompting extension turned on, which... Was likely a poor choice in choosing the term to use for it
